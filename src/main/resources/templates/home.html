@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Register</title>
+</head>
+<body>
+<div class="container">
+  <h3>Do you need a loan?</h3>
+    <br><br>
+    <div>
+    <h4>Go to the registration page</h4>
+    <a th:href="${ '/register'}" class="btn btn-info btn-lg"
+       role="button" aria-pressed="true">Register</a>
+    </div>
+    <br>
+    <div>
+    <h4>or go to the login page</h4>
+    <a th:href="${ '/login'}" class="btn btn-info btn-lg"
+       role="button" aria-pressed="true">Login</a>
+    </div>
+</div>
+
+</body>
+</html>

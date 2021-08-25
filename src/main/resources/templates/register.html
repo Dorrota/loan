@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Register</title>
+</head>
+<body>
+<div class="container">
+    <h1>Register form</h1>
+    <form action="#" th:action="@{/register}" method="post">
+        <div class="form-group">
+            First name: <input class="form-control" type="text" th:value="*{user.firstName}" name="firstName"/>
+        </div>
+        <div class="form-group">Last name: <input class="form-control" type="text" th:value="*{user.lastName}" name="lastName"/></div>
+        <div class="form-group">Login : <input class="form-control" type="text" th:value="*{user.login}" name="login"/></div>
+        <div class="form-group">Password: <input class="form-control" type="text" th:value="*{user.password}" name="password"/></div>
+
+        <p><input class="btn btn-primary" type="submit" value="Submit" /> <input class="btn btn-primary" type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+</html>

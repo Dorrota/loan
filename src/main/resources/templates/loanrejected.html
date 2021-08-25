@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Rejected</title>
+</head>
+<body>
+<div class="container">
+  <h3>You cannot have a loan bigger than  <span th:text="${@environment.getProperty('sb.max.value.of.loan')}"/>.</h3>
+
+  <h4>Between <span th:text="${@environment.getProperty('sb.max.hour.of.loan')}"/> and
+    <span th:text="${@environment.getProperty('sb.min.hour.of.loan')}"/> we are sleeping - you cannot take out a loan. </h4>
+
+</div>
+</body>
+</html>

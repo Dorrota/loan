@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Loan details</title>
+</head>
+<body>
+<div class="container">
+    <h2>Your loans details</h2>
+    <br>
+<table class="table table-bordered">
+    <tr>
+        <th>First Name</th>
+        <th>Last name</th>
+        <th>Login</th>
+    </tr>
+    <tr>
+        <td th:text="${user.firstName}">First name</td>
+        <td th:text="${user.lastName}">Last name</td>
+        <td th:text="${user.login}">Login</td>
+    </tr>
+    </table>
+    <h3>All loans</h3>
+    <table class="table table-bordered">
+    <tr>
+        <th>Loan sum</th>
+        <th>Repayment Date</th>
+    </tr>
+
+    <tr th:each="loan: ${loans}">
+        <td th:text="${loan.loanSum}">Loan sum</td>
+        <td th:text="${loan.repaymentDate}">Repayment date</td>
+<!--        <td th:if="${loan.repaymentDate.isAfter(#temporals.createNow())}">Is after</td>
+        <td th:if="${loan.repaymentDate.isBefore(#temporals.createNow())}">Is before</td>-->
+    </tr>
+</table>
+    <h3>Loans to pay</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Loan sum</th>
+            <th>Repayment Date</th>
+            <th>Extend by 14 days</th>
+        </tr>
+        <tr th:each="toPay: ${loanToPay}">
+            <td th:text="${toPay.loanSum}">Loan sum</td>
+            <td th:text="${toPay.repaymentDate}">Repayment date</td>
+            <td>
+            <form action="#" th:action="@{/loan/toextend}" method="post">
+                <button class="btn btn-info btn-lg" th:name="toPayId" th:value="${toPay.id}">Extend</button>
+            </form>
+            </td>
+            <td>Go to the extension form</td>
+        </tr>
+    </table>
+<p><a th:href="${'/loan/form'}" class="btn btn-info btn-lg"
+    role="button" aria-pressed="true">Get a new loan</a></p>
+    <div class="float-right">
+    <form th:action="@{/logout}" method="post">
+        <input class="btn btn-info btn-lg"
+               role="button" aria-pressed="true" type="submit" value="Logout"/>
+    </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Loan request</title>
+</head>
+<body>
+<div class="container">
+
+    <h1>Loan form</h1>
+    <p>First name: <span th:text="${user.firstName}"></span></p>
+    <p>Last name: <span th:text="${user.lastName}"></span></p>
+
+    <form action="#" th:action="@{/loan/form}" method="post">
+
+        <div class="form-group">Loan sum: <input class="form-control" type="text" th:value="*{loan.loanSum}" name="loanSum"/></div>
+        <div class="input-group date">
+        <p>Loan end date: <input type="date" class="form-control" autocomplete="off" th:value="*{loan.repaymentDate}" name="repaymentDate"></p>
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+            </div>
+        </div>
+        <p><input class="btn btn-primary" type="submit" value="Submit" /> <input class="btn btn-primary" type="reset" value="Reset" /></p>
+    </form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
