@@ -10,9 +10,14 @@
 <body>
 <div class="container">
   <h3>You cannot have a loan bigger than  <span th:text="${@environment.getProperty('sb.max.value.of.loan')}"/>.</h3>
-
+  <br>
   <h4>Between <span th:text="${@environment.getProperty('sb.max.hour.of.loan')}"/> and
     <span th:text="${@environment.getProperty('sb.min.hour.of.loan')}"/> we are sleeping - you cannot take out a loan. </h4>
+  <br>
+  <h4>Remember: Enter the valid repayment date.</h4><br>
+  <a th:href="${ '/loan/loandetails'}" class="btn btn-info btn-lg"
+     role="button" aria-pressed="true">Try again</a>
+</div>
 
 </div>
 </body>

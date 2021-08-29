@@ -23,7 +23,10 @@
         <td th:text="${user.login}">Login</td>
     </tr>
     </table>
-    <h3>All loans</h3>
+
+    <span th:if="${loanToPay.isEmpty()}"><h3>You have no loans yet</h3></span>
+    <span th:unless="${loanToPay.isEmpty()}">
+        <h3>All loans</h3>
     <table class="table table-bordered">
     <tr>
         <th>Loan sum</th>
@@ -33,8 +36,8 @@
     <tr th:each="loan: ${loans}">
         <td th:text="${loan.loanSum}">Loan sum</td>
         <td th:text="${loan.repaymentDate}">Repayment date</td>
-<!--        <td th:if="${loan.repaymentDate.isAfter(#temporals.createNow())}">Is after</td>
-        <td th:if="${loan.repaymentDate.isBefore(#temporals.createNow())}">Is before</td>-->
+        <!--        <td th:if="${loan.repaymentDate.isAfter(#temporals.createNow())}">Is after</td>
+                <td th:if="${loan.repaymentDate.isBefore(#temporals.createNow())}">Is before</td>-->
     </tr>
 </table>
     <h3>Loans to pay</h3>
@@ -52,9 +55,9 @@
                 <button class="btn btn-info btn-lg" th:name="toPayId" th:value="${toPay.id}">Extend</button>
             </form>
             </td>
-            <td>Go to the extension form</td>
         </tr>
     </table>
+    </span>
 <p><a th:href="${'/loan/form'}" class="btn btn-info btn-lg"
     role="button" aria-pressed="true">Get a new loan</a></p>
     <div class="float-right">
