@@ -20,7 +20,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -36,8 +35,6 @@ public class LoanController {
     private int maxHour;
     @Value("${sb.max.value.of.loan}")
     private int maxValueOfLoan;
-
-    //Logger logger = LoggerFactory.getLogger(LoanController.class);
 
     public LoanController(LoanService loanService, UserService userService) {
         this.loanService = loanService;
@@ -101,12 +98,5 @@ public class LoanController {
         loanService.extendTheLoan(loan);
         return "redirect:/loan/loandetails";
     }
-
-   /* @PostMapping("/toextend")
-    public String saveLoanExtension(@ModelAttribute Loan loan) {
-        System.out.println("Post loan Id " + loan.getId());
-        loanService.extendTheLoan(loan);
-        loanService.saveLoan(loan);
-        return "redirect:loan/loandetails";
-    }*/
+    
 }
