@@ -7,6 +7,7 @@ import com.kocurek.loans.repository.LoanRepository;
 import com.kocurek.loans.repository.UserRepository;
 import com.kocurek.loans.service.LoanService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,12 +24,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@DisplayName("Test cases for loan services")
 @ExtendWith(MockitoExtension.class)
 public class LoanServiceTest {
 
@@ -65,7 +67,7 @@ public class LoanServiceTest {
     @Test
     public void findLoanByLoanId_Test() {
         Long id = 1L;
-        when(loanRepository.findById(id)).thenReturn(Optional.ofNullable(loan));
+        when(loanRepository.findById(id)).thenReturn(Optional.of(loan));
         Loan expectedLoan = loanService.findLoanByLoanId(id);
         assertEquals(id,expectedLoan.getId());
         verify(loanRepository, times(1)).findById(id);
@@ -90,5 +92,11 @@ public class LoanServiceTest {
         when(loanRepository.save(loan)).thenReturn(expectedLoan);
         Loan extendedLoan = loanService.extendTheLoan(loan);
         assertEquals(expectedLoan.getRepaymentDate(), extendedLoan.getRepaymentDate());
+    }
+
+    @Test
+    public void findLoanByLoanIdIsNull_ThrowException_Test() {
+        when(loanRepository.findById(1L)).thenThrow(new EntityNotFoundException());
+        assertThrows(EntityNotFoundException.class, () -> loanService.findLoanByLoanId(1L));
     }
 }
