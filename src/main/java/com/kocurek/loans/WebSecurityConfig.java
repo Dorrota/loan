@@ -29,10 +29,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home", "/register", "/login").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
-                //.loginPage("/login")
-                .defaultSuccessUrl("/loan/form", true)
-                .failureUrl("/home")
-                .and().logout().logoutSuccessUrl("/")
+                .loginPage("/login")
+                .defaultSuccessUrl("/loan/loandetails", true)
+                .failureUrl("/error.html?error=true")
+                .and().logout().logoutSuccessUrl("/login")
                 .permitAll();
     }
 

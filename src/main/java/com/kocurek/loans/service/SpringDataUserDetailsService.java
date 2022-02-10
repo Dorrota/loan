@@ -21,10 +21,9 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        //System.out.println("Login UserDetails " + login);
         User user = userService.getUserByLogin(login);
-        // System.out.println("Login " + user.getLogin());
         if (user == null) {
+            //System.out.println("User null");
             throw new UsernameNotFoundException(login);
         }
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), Collections.emptyList());

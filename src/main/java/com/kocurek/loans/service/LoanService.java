@@ -40,4 +40,5 @@ public class LoanService {
         Loan loan = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         return loan;
     }
+
 }

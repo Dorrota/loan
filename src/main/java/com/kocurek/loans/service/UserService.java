@@ -4,6 +4,7 @@ import com.kocurek.loans.domain.User;
 import com.kocurek.loans.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -24,6 +25,8 @@ public class UserService {
         return user;
     }
     public User getUserByLogin(String login) {
-        return userRepository.findByLogin(login);
+        User user = userRepository.findByLogin(login);
+                //orElseThrow(EntityNotFoundException::new);
+        return user;
     }
 }

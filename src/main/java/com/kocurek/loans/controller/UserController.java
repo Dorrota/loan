@@ -30,10 +30,10 @@ public class UserController {
         return "home";
     }
 
-/*    @GetMapping("/login")
+    @GetMapping("/login")
     public String loginPage() {
         return "login";
-    }*/
+    }
 
     @GetMapping("/register")
     public String registerUserForm(Model model) {

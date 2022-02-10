@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sf="http://www.w3.org/1999/xhtml" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,16 +9,17 @@
 </head>
 <body>
 <div class="container">
-  <h2 class="form-signin-heading">Welcome to Huong Dan Java, please login</h2>
-  <div th:if="${param.error}" class="alert alert-danger">
-    Invalid username and password.
-  </div>
-  <div th:if="${param.logout}" class="alert alert-success">
-    You have been logged out.
-  </div>
+  <h2 class="form-signin-heading">Welcome to quick loan site</h2>
+
   <form class="form-signin" method="POST" th:action="@{/login}">
+    <div th:if="${param.error}" class="alert alert-danger">
+      Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success">
+      You have been logged out.
+    </div>
     <p>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Login</label>
       <input type="text" id="username" name="username" class="form-control"
              placeholder="Username" required autofocus>
     </p>
@@ -27,8 +28,15 @@
       <input type="password" id="password" name="password" class="form-control"
              placeholder="Password" required>
     </p>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <button class="btn btn-lg btn-primary" type="submit">Login</button>
   </form>
+  <div>
+    <br>
+    or
+    <br><br>
+  <a th:href="${ '/register'}" class="btn btn-info btn-lg"
+     role="button" aria-pressed="true">Register</a>
+  </div>
 </div>
 </body>
 </html>
